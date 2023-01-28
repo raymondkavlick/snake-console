@@ -1,13 +1,17 @@
 CC = g++
-OBJ = game
-HEADER = Screen.h
-CFLAGS = -c -Wall 
+SRCS := $(wildcard *.cpp)
+OBJS := $(SRCS:cpp=o)
+CFLAGS := -Wall -Werror
 
-hello: $(OBJ)
-    $(CC) $(OBJ) -o $@
+.PHONY: all clean
 
-main.o: src/main.cpp $(HEADER)
-    $(CC) $(CFLAGS) $< -o $@
+default: game 
 
-clean: 
-    rm -rf *o hello
+game: $(OBJS) Makefile
+	$(CC) -o $@ $(OBJS) $(CFLAGS) -lncurses
+
+$(OBJS): %.o: %.cpp Makefile
+	$(CC) -c $< $(CFLAGS)
+
+clean:
+	@rm -rf app $(OBJS)

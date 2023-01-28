@@ -2,15 +2,8 @@
 
 class Screen {
 public:
-	Screen () {
-		initscr();
-	}
-	~Screen(){
-		endwin();
-	}
+	Screen();
+	~Screen();
 
-	void tic() {
-		refresh();
-	}
-    void test();
+	void tic();
 };
