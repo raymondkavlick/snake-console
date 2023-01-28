@@ -17,17 +17,3 @@ int main(void){
 	auto ch = getch();			/* Wait for user input */
 	return 0;
 }
-
-class Screen {
-public:
-	Screen () {
-		initscr();
-	}
-	~Screen(){
-		endwin();
-	}
-
-	void tic() {
-		refresh();
-	}
-};

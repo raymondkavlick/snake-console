@@ -1,7 +1,13 @@
-default:
-	g++ Snake.cpp Snake.h
-#	g++ Screen.cpp -lncurses
-#	g++ game.cpp Snake.o Screen.o -o game
+CC = g++
+OBJ = game
+HEADER = Screen.h
+CFLAGS = -c -Wall 
+
+hello: $(OBJ)
+    $(CC) $(OBJ) -o $@
+
+main.o: src/main.cpp $(HEADER)
+    $(CC) $(CFLAGS) $< -o $@
 
 clean: 
-	rm game
+    rm -rf *o hello

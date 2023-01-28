@@ -1,6 +1,7 @@
 
 #include <thread>
 #include <Screen.h>
+
 #define sleepms(val) std::this_thread::sleep_for(val##ms)
 
 class Snake {
