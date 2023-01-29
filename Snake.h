@@ -4,10 +4,11 @@
 #include <queue>
 
 
-class Snake {
+class Snake { 
 public:
 	Snake();
 	bool tic();
+	int getScore() const;
 private:
 	void handle_input();
 	static constexpr size_t SNAKE_START_LEN {5};

@@ -8,7 +8,7 @@ class ScreenNcurse final : public ScreenInterface
 {
 public:
 	ScreenNcurse();
-	void tic(board_container&) override;
+	void tic(board_container&,int) override;
 	void set_log(std::string) override;
 	void close() override;
 	Direction get_direction() override;

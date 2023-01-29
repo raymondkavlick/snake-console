@@ -20,7 +20,7 @@ void ScreenNcurse::close() {
     endwin();
 }
 
-void ScreenNcurse::tic(board_container & board){
+void ScreenNcurse::tic(board_container & board, int score){
  
     int row = 0;
     for (const auto & ch : board){
@@ -29,6 +29,9 @@ void ScreenNcurse::tic(board_container & board){
         }
         move(++row,0);
     }
+
+    move(++row,0);
+    printw(" Score = %d",score);
     move(0,0);
     refresh();
     usleep(refresh_delay_us);

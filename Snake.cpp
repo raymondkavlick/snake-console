@@ -9,7 +9,7 @@ Snake::Snake() {
     board[snake.back().first][snake.back().second] = snake_char;
     srand(time(NULL));
     for (uint32_t i = 0; i < NUM_OF_RATS; i++) addRat();
-    screen.tic(board);
+    screen.tic(board,getScore());
 }
 
 bool Snake::tic() {
@@ -19,7 +19,7 @@ bool Snake::tic() {
         screen.close();
         return false;
     }
-    screen.tic(board);
+    screen.tic(board,getScore());
 
     return true;
 }
@@ -107,4 +107,8 @@ Direction Snake::get_direction() {
 void Snake::setBoard(char set) {
     for (auto & ch : board)
         for (auto & c : ch) c = set;
+}
+
+int Snake::getScore() const {
+    return snake_len - SNAKE_START_LEN;
 }

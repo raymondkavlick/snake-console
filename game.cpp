@@ -8,6 +8,6 @@ using namespace std;
 int main() {	
 	auto snake = std::make_unique<Snake>();
 	while (snake->tic());
-	cout << "\r\n*** YOU LOSE ***\r\n";
+	cout << "\r\n* Score : " << snake->getScore() << " *\r\n";
 	return 0;
 }
