@@ -8,22 +8,22 @@
 
 Screen::Screen() {
     initscr();
-    clear();
+    clear();    
     curs_set(0);    
     cbreak();
-    noecho();
     keypad(stdscr,true);
     nodelay(stdscr, true);
-    set_refresh_rate_HZ_to_delay(4);
+    set_refresh_rate_HZ_to_delay(6);
 }
 
 Screen::Screen(int rate) : refresh_HZ(rate) {
     set_refresh_rate_HZ_to_delay(rate);
 }
 
-Screen::~Screen(){
+void Screen::close() {
     endwin();
 }
+
 void Screen::tic(board_container & board){
  
     int row = 0;
@@ -33,6 +33,7 @@ void Screen::tic(board_container & board){
         }
         move(++row,0);
     }
+    move(0,0);
     refresh();
     usleep(refresh_delay_us);
 }
@@ -49,4 +50,13 @@ void Screen::print_ch(char ch) {
 
 int Screen::get_key() {
     return getch();
+}
+
+void Screen::set_log(std::string log) {
+    if (logging_enabled) {
+        move(0,0);
+        //printw(log.c_str());
+        refresh();
+        sleep(2);
+    }
 }

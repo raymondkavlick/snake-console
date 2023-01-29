@@ -11,17 +11,14 @@ enum class Direction {
 };
 
 class Snake {
-	
-using board_row = std::vector<char>;
-using board_container = std::vector<board_row>;
-using point = std::pair<size_t,size_t> ;
 public:
 	Snake();
 	bool tic();
 private:
 	void handle_input();
-	static constexpr size_t SNAKE_START_LEN {3};
-	static constexpr size_t BOARD_SIZE_ROWS {7};
+	static constexpr size_t SNAKE_START_LEN {5};
+	static constexpr size_t NUM_OF_RATS {7};
+	static constexpr size_t BOARD_SIZE_ROWS {12};
 	static constexpr size_t NUM_ROWS {BOARD_SIZE_ROWS};
 	static constexpr size_t NUM_COLS {BOARD_SIZE_ROWS * 2};
 	std::queue<point> snake;
@@ -35,4 +32,5 @@ private:
 	bool isGameOver();
 	void addRat();
 	Direction get_direction();
+	void setBoard(char);
 };

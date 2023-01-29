@@ -1,17 +1,24 @@
 #include "Snake.h"
 #include <iostream>
+#include <string>
+#include <unistd.h>
 
 Snake::Snake() {
     board.assign(NUM_ROWS,board_row(NUM_COLS,init_char));
     snake.push({NUM_ROWS / 2, NUM_COLS / 2});
+    board[snake.back().first][snake.back().second] = snake_char;
     srand(time(NULL));
-    addRat();
+    for (uint32_t i = 0; i < NUM_OF_RATS; i++) addRat();
+    screen.tic(board);
 }
 
 bool Snake::tic() {
 
     handle_input();
-    if (gameover) return false;
+    if (gameover) {
+        screen.close();
+        return false;
+    }
     screen.tic(board);
 
     return true;
@@ -40,14 +47,12 @@ void Snake::handle_input() {
         snake_len++;
         addRat();
     }
-
-    board[snake_pos.first][snake_pos.second] = snake_char;
+    board[snake.back().first][snake.back().second] = snake_char;
 
     if (snake.size() >= snake_len + 1) {
         board[snake.front().first][snake.front().second] = init_char;
         snake.pop();
     }
-
 }
 
 bool Snake::isGameOver() {
@@ -55,8 +60,8 @@ bool Snake::isGameOver() {
     return snake_pos.first < 0 ||
         snake_pos.first == NUM_ROWS ||
         snake_pos.second < 0 ||
-        snake_pos.second == NUM_COLS ;
-        //board[snake_pos.first][snake_pos.second] == snake_char;
+        snake_pos.second == NUM_COLS ||
+        board[snake_pos.first][snake_pos.second] == snake_char;
 }
 
 void Snake::addRat() {
@@ -98,4 +103,9 @@ Direction Snake::get_direction() {
             break;
     }
     return dir;
+}
+
+void Snake::setBoard(char set) {
+    for (auto & ch : board)
+        for (auto & c : ch) c = set;
 }

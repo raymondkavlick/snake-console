@@ -1,7 +1,7 @@
 CC = g++
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:cpp=o)
-CFLAGS := -Wall
+CFLAGS := -std=c++20 -Wall
 
 .PHONY: all clean
 
