@@ -1,11 +1,11 @@
 CC = g++
 SRCS := $(wildcard *.cpp)
 OBJS := $(SRCS:cpp=o)
-CFLAGS := -Wall -Werror
+CFLAGS := -Wall
 
 .PHONY: all clean
 
-default: game 
+default: clean game 
 
 game: $(OBJS) Makefile
 	$(CC) -o $@ $(OBJS) $(CFLAGS) -lncurses
