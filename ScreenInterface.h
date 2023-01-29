@@ -1,4 +1,5 @@
 #include "SnakeCommon.h"
+#include <string>
 
 class ScreenInterface {
     virtual Direction get_direction() = 0;
