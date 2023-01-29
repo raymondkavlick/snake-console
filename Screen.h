@@ -7,6 +7,7 @@ public:
 	Screen();
 	Screen(int);
 	~Screen();
+	int get_key();
 	using board_container = std::vector<std::vector<char>>;
 
 	void tic(board_container&);
@@ -16,5 +17,6 @@ private:
 	void set_refresh_rate_HZ_to_delay(int rate) {
     	refresh_delay_us = 1e6 / rate;
 	}
-	wchar_t get_wc(const char);
+	void print_ch(char);
+	void print_str(std::vector<char> &);
 };
