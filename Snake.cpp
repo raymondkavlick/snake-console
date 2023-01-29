@@ -81,21 +81,20 @@ void Snake::addRat() {
 Direction Snake::get_direction() {
     static Direction dir = Direction::LEFT;
 
-    auto c = screen.get_key();
-    switch (c) {
-        case KEY_RIGHT:
+    switch (screen.get_direction()) {
+        case Direction::RIGHT:
             if (dir != Direction::LEFT)
                 dir = Direction::RIGHT;
             break;
-        case KEY_LEFT:
+        case Direction::LEFT:
             if (dir != Direction::RIGHT)
                 dir = Direction::LEFT;
             break;
-        case KEY_DOWN:
+        case Direction::DOWN:
             if (dir != Direction::UP)
                 dir = Direction::DOWN;
             break;
-        case KEY_UP:
+        case Direction::UP:
             if (dir != Direction::DOWN)
                 dir = Direction::UP;
             break;

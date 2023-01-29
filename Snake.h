@@ -1,14 +1,8 @@
 
-#include "Screen.h"
+#include "ScreenNcurse.h"
 #include <vector>
 #include <queue>
 
-enum class Direction {
-	RIGHT,
-	LEFT,
-	DOWN,
-	UP
-};
 
 class Snake {
 public:
@@ -17,13 +11,13 @@ public:
 private:
 	void handle_input();
 	static constexpr size_t SNAKE_START_LEN {5};
-	static constexpr size_t NUM_OF_RATS {7};
-	static constexpr size_t BOARD_SIZE_ROWS {12};
+	static constexpr size_t NUM_OF_RATS {5};
+	static constexpr size_t BOARD_SIZE_ROWS {11};
 	static constexpr size_t NUM_ROWS {BOARD_SIZE_ROWS};
 	static constexpr size_t NUM_COLS {BOARD_SIZE_ROWS * 2};
 	std::queue<point> snake;
 	size_t snake_len = SNAKE_START_LEN;
-	Screen screen;
+	ScreenNcurse screen;
 	bool gameover = false;
 	board_container board;
 	static constexpr char init_char {'-'};

@@ -2,5 +2,4 @@
 Snake game on a console
 
 # depenencies
-Linux NCurses
-VT100 Terminal
+NCurses ( maxOS/linux )
